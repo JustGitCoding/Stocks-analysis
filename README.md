@@ -1,2 +1,2 @@
-# stocks-analysis
+# Stocks-analysis
 Analyzing historical stock trends
