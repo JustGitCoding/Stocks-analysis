@@ -7,37 +7,58 @@ The goal of this project is to analyze stocks trade volume, as well as average r
 ## Results
 ### 2017 Data vs 2018 Data
 ![VBA_Challenge_2017](https://user-images.githubusercontent.com/97985062/152259632-ec78140e-8997-4246-a7e2-1ea1b6d9b88f.png) ![VBA_Challenge_2018](https://user-images.githubusercontent.com/97985062/152259645-15094b9e-3a62-4ae9-a4e9-c32d8838c802.png)
-### Comparisons
-Based on the analysis, 11 out of 12 stocks had positive returns in 2017 while only 2 out of 12 had positive returns in 2018. These two stocks (ENPH and RUN) are likely the stronger investment choices, as we see that for both stocks, trade volume increased year over year, and 2018 data (most recent data available) had high return percentages (80%+).
+### Stock Performance Comparison
+Based on the analysis, 11 out of 12 stocks had positive returns in 2017 while only 2 out of 12 had positive returns in 2018. These two stocks (ENPH and RUN) are likely the stronger investment choices as we see that for both stocks, trade volume increased year over year, and 2018 data (most recent data available) showed high rates of return.
+
+### Impact of Refactoring
+After performing the analysis above, we refactored the VBA script such that the code looped through the 3,000+ lines of data only once (as opposed to once per stock ticker), and saved each stock's trade volume and start/end prices into output arrays, which could be easily referenced. 
 
 ```
-For i = 2 To RowCount
-	If Cells(i, 1).Value = tickers(tickerIndex) Then
-    		tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
+    '1a) Create a ticker Index
+    Dim tickerIndex As Integer
+    tickerIndex = 0
+    
+    '1b) Create three output arrays
+    Dim tickerVolumes(12) As Long
+    Dim tickerStartingPrices(12) As Single
+    Dim tickerEndingPrices(12) As Single
+        
+    '2a) Create a for loop to initialize the tickerVolumes to zero.
+    For j = 0 To 11
+        tickerVolumes(j) = 0
+    Next j
+                                
+    '2b) Loop over all the rows in the spreadsheet.
+    For i = 2 To RowCount
+    
+        '3a) Increase volume for current ticker
+        If Cells(i, 1).Value = tickers(tickerIndex) Then
+            tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
         End If
             
+        '3b) Check if the current row is the first row with the selected tickerIndex.
         If Cells(i, 1).Value = tickers(tickerIndex) And Cells(i - 1, 1).Value <> tickers(tickerIndex) Then
+            'capture ticker Starting Price
             tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
         End If
             
+        '3c) check if the current row is the last row with the selected ticker
         If Cells(i, 1).Value = tickers(tickerIndex) And Cells(i + 1, 1).Value <> tickers(tickerIndex) Then
+            'capture ticker ending price
             tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
                 
+            '3d Increase the tickerIndex.
             tickerIndex = tickerIndex + 1
         End If
         
-Next i
+    Next i
 
 ```
-
-
-
-
-Using images and examples of your code, compare the stock performance between 2017 and 2018, as well as the execution times of the original script and the refactored script.
-
+This resulted in drastic time savings with the old code running in ~0.37 seconds on average, and the new code running in ~0.05 seconds (over 7x faster!)
 
 
 ## Summary
-In a summary statement, address the following questions.
-1. What are the advantages or disadvantages of refactoring code?
-2. How do these pros and cons apply to refactoring the original VBA script?
+### Refactoring Code in General
+The main advantage of refactoring code is to improve the efficiency of the code. This is generally achieved by simplifying the code so that it takes fewer steps or utilizes less memory (all without sacrificing functionality). However, some disadvantages of refactoring code include cost (time & money) as well as risk of breaking the code by oversimplifying it such that it no longer considers all potential use cases (i.e. the code may no longer work in fringe/edge cases).
+### Refactoring our VBA script
+As noted above, our refactored VBA script runs over 7x faster than the original script. This is the primary benefit of the refactoring that was performed. However, one drawback to the refactored script is that _____
