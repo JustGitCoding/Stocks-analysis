@@ -6,7 +6,12 @@ The goal of this project is to analyze stocks trade volume, as well as average r
 
 ## Results
 
-![VBA_Challenge_2017](https://user-images.githubusercontent.com/97985062/152259022-bf8ebe27-35b3-4d1b-8855-b4c21a925518.png)![VBA_Challenge_2018](https://user-images.githubusercontent.com/97985062/152259040-b1aa657f-e253-46ac-90d4-5870b810cd52.png)
+### 2017 Data
+![VBA_Challenge_2017](https://user-images.githubusercontent.com/97985062/152259632-ec78140e-8997-4246-a7e2-1ea1b6d9b88f.png)
+
+### 2018 Data
+![VBA_Challenge_2018](https://user-images.githubusercontent.com/97985062/152259645-15094b9e-3a62-4ae9-a4e9-c32d8838c802.png)
+
 
 
 
