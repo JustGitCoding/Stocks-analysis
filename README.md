@@ -4,6 +4,9 @@
 ### Assessing stock performance over a two year period (2017 - 2018)
 The goal of this project is to analyze stocks trade volume, as well as average rate of return for twelve popular ticker symbols. Additionally, using VBA script in Excel, we automated various aspects of our analysis, which can easily be re-used for data that may be obtained in for later years or for other ticker symbols.
 
+### Refactoring VBA script for efficiency
+Another goal in this project is to find a way to make our VBA script more efficient (take less time to run). We achieved this by changing the code to loop through the data once (as opposed to once per stock) and saving the output in arrays.
+
 ## Results
 ### 2017 Data vs 2018 Data
 ![VBA_Challenge_2017](https://user-images.githubusercontent.com/97985062/152259632-ec78140e-8997-4246-a7e2-1ea1b6d9b88f.png) ![VBA_Challenge_2018](https://user-images.githubusercontent.com/97985062/152259645-15094b9e-3a62-4ae9-a4e9-c32d8838c802.png)
@@ -54,11 +57,10 @@ After performing the analysis above, we refactored the VBA script such that the 
     Next i
 
 ```
-This resulted in drastic time savings with the old code running in ~0.37 seconds on average, and the new code running in ~0.05 seconds (over 7x faster!)
-
+This resulted in drastic time savings with the old code running in ~0.37 seconds on average, and the refactored code running in ~0.05 seconds (over 7x faster!)
 
 ## Summary
 ### Refactoring Code in General
 The main advantage of refactoring code is to improve the efficiency of the code. This is generally achieved by simplifying the code so that it takes fewer steps or utilizes less memory (all without sacrificing functionality). However, some disadvantages of refactoring code include cost (time & money) as well as risk of breaking the code by oversimplifying it such that it no longer considers all potential use cases (i.e. the code may no longer work in fringe/edge cases).
-### Refactoring our VBA script
-As noted above, our refactored VBA script runs over 7x faster than the original script. This is the primary benefit of the refactoring that was performed. However, one drawback to the refactored script is that _____
+### Impact of Refactoring our VBA script
+As noted above, the primary benefit of refactoring is that our VBA script now runs over 7x faster than the original script. Because our VBA script is rather simple to begin with, the cost of refactoring is low, and the risk of oversimplification is remote.
