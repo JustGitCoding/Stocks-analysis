@@ -14,7 +14,7 @@ Another goal in this project is to find a way to make our VBA script more effici
 Based on the analysis, 11 out of 12 stocks had positive returns in 2017 while only 2 out of 12 had positive returns in 2018. These two stocks (ENPH and RUN) are likely the stronger investment choices as we see that for both stocks, trade volume increased year over year, and 2018 data (most recent data available) showed high rates of return.
 
 ### Impact of Refactoring
-After performing the analysis above, we refactored the VBA script such that the code looped through the 3,000+ lines of data only once (as opposed to once per stock ticker), and saved each stock's trade volume and start/end prices into output arrays, which could be easily referenced. 
+After performing the analysis above, we refactored the VBA script such that the code looped through the 3,000+ lines of data only once (as opposed to once per stock ticker), and saved each stock's trade volume and start/end prices into output arrays, which could be easily referenced (see sample code below).
 
 ```
     '1a) Create a ticker Index
